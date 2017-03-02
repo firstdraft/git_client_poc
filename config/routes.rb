@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get "/" => "commands#log"
       get "log" => "commands#log"
       resources :branches
+      resources :commits
     end
   end
 

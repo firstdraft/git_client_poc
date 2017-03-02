@@ -9,25 +9,33 @@
         <% if @diff_html.present? %>
           <iframe srcdoc="<%= @diff_html %>" width="100%" height="400">
           </iframe>
+
+          <div class="row">
+            <div class="col">
+              <%= form_tag commits_url do %>
+                <div class="form-group">
+                  <%= label_tag :summary %>
+                  <%= text_field_tag :summary, nil, placeholder: "Enter a brief summary of your changes (required)", class: "form-control", required: true %>
+                </div>
+
+                <div class="form-group">
+                  <%= label_tag :description %>
+                  <%= text_area_tag :description, nil, placeholder: "Enter a longer description of your changes (optional)", class: "form-control" %>
+                </div>
+
+                <%= button_tag "Commit and Push these changes to GitHub", class: "btn btn-primary btn-block" %>
+              <% end %>
+            </div>
+
+            <div class="col align-self-center">
+              <%= link_to "Discard these changes", "#", class: "btn btn-danger btn-block" %>
+            </div>
+          </div>
+
         <% else %>
           <pre>
             <%= simple_format @status %>
           </pre>
-        <% end %>
-
-
-        <%= form_tag do %>
-          <div class="form-group">
-            <%= label_tag :summary %>
-            <%= text_field_tag :summary, nil, placeholder: "Enter a brief summary of your changes (required)", class: "form-control", required: true %>
-          </div>
-
-          <div class="form-group">
-            <%= label_tag :description %>
-            <%= text_area_tag :description, nil, placeholder: "Enter a longer description of your changes (optional)", class: "form-control" %>
-          </div>
-
-          <%= button_tag "Commit and Sync", class: "btn btn-primary btn-block" %>
         <% end %>
       </div>
     </div>
