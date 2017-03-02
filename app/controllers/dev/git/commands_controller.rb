@@ -17,7 +17,7 @@ class Dev::Git::CommandsController < ApplicationController
 
       @branches = `git branch`
 
-      @log = `git log --branches --remotes --tags --graph --oneline --decorate --pretty=format:"%d %s - %cr"`
+      @log = `git log --branches --remotes --tags --graph --oneline --decorate --pretty=format:"%d %s - %cr (%h)"`
     end
   end
 end
