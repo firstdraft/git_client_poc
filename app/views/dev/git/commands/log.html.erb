@@ -56,7 +56,7 @@
                 <%= simple_format @branches %>
               </pre>
 
-              <%= form_tag dev_git_branches_checkout_url do %>
+              <%= form_tag dev_git_branches_checkout_url, method: :get do %>
                 <div class="form-group">
                   <%= label_tag :name %>
                   <%= text_field_tag :name, nil, placeholder: "Enter the name of the branch to switch to...", class: "form-control" %>
