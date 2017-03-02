@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>GitClient</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>GitClient</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <script src="https://cdnjs.com/libraries/gitgraph.js"></script>
-  </head>
+  <script src="https://cdnjs.com/libraries/gitgraph.js"></script>
+</head>
 
-  <body>
-    <div class="container">
-      <%= yield %>
+<body>
+  <div class="container">
+    <% if notice.present? %>
+    <div class="row">
+      <div class="col">
+        <div class="alert alert-dismissable alert-success">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= notice %>
+        </div>
+      </div>
     </div>
-  </body>
+    <% end %>
+
+    <% if alert.present? %>
+    <div class="row">
+      <div class="col">
+        <div class="alert alert-dismissable alert-warning">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= alert %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+    <%= yield %>
+  </div>
+</body>
 </html>
