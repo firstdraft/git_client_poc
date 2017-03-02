@@ -1,17 +1,64 @@
-<h2>Status</h2>
+<div class="row mb-4">
+  <div class="col">
+    <div class="card">
+      <h2 class="card-header">
+        Status
+      </h2>
 
-<pre>
-  <%= simple_format @status %>
-</pre>
+      <div class="card-block">
+        <pre>
+          <%= simple_format @status %>
+        </pre>
 
-<h2>Branches</h2>
+        <iframe srcdoc="<%= @diff %>" width="100%" height="400">
+        </iframe>
 
-<pre>
-  <%= simple_format @branches %>
-</pre>
+        <%= form_tag do %>
+          <div class="form-group">
+            <%= label_tag :summary %>
+            <%= text_field_tag :summary, nil, placeholder: "Enter a brief summary of your changes (required)", class: "form-control", required: true %>
+          </div>
 
-<h2>Log</h2>
+          <div class="form-group">
+            <%= label_tag :description %>
+            <%= text_area_tag :description, nil, placeholder: "Enter a longer description of your changes (optional)", class: "form-control" %>
+          </div>
 
-<pre>
-  <%= simple_format @log %>
-</pre>
+          <%= button_tag "Commit and Sync", class: "btn btn-primary btn-block" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col">
+    <div class="card">
+      <h2 class="card-header">
+        Branches
+      </h2>
+
+      <div class="card-block">
+        <pre>
+          <%= simple_format @branches %>
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col">
+    <div class="card">
+      <h2 class="card-header">
+        Log
+      </h2>
+
+      <div class="card-block">
+        <pre>
+          <%= simple_format @log %>
+        </pre>
+      </div>
+    </div>
+  </div>
+</div>
