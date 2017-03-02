@@ -35,6 +35,8 @@
         <% else %>
           <pre>
             <%= simple_format @status %>
+
+            <%= simple_format @log %>
           </pre>
         <% end %>
       </div>
@@ -66,9 +68,7 @@
       </h2>
 
       <div class="card-block">
-        <pre>
-          <%= simple_format @log %>
-        </pre>
+
       </div>
     </div>
   </div>

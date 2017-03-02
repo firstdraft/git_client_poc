@@ -17,7 +17,7 @@ class Dev::Git::CommandsController < ApplicationController
 
       @branches = `git branch`
 
-      @log = `git log --oneline --decorate --graph --all -30`
+      @log = `git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit`
     end
   end
 end
