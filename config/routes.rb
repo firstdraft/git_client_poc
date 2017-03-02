@@ -5,9 +5,9 @@ Rails.application.routes.draw do
       get "/" => "commands#log"
       get "log" => "commands#log"
       resources :branches
-      get "branches/checkout" => "branches#checkout"
+      get "branches/checkout"
       resources :commits
-      post "commits/stash" => "commits#stash"
+      post "commits/stash"
     end
   end
 
