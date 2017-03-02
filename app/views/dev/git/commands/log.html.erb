@@ -6,7 +6,7 @@
       </h2>
 
       <div class="card-block">
-        <% if @diff_html.present? %>
+        <% if false %>
           <iframe srcdoc="<%= @diff_html %>" width="100%" height="400">
           </iframe>
 
@@ -42,9 +42,27 @@
             </div>
 
             <div class="col">
+              <%= form_tag dev_git_branches_url do %>
+                <div class="form-group">
+                  <%= label_tag :name %>
+                  <%= text_field_tag :name, nil, placeholder: "Enter the name of the branch to create...", class: "form-control" %>
+                </div>
+                <%= button_tag "Create a new branch", class: "btn btn-primary btn-block" %>
+              <% end %>
+
+              <h3>Branch list</h3>
+
               <pre>
                 <%= simple_format @branches %>
               </pre>
+
+              <%= form_tag dev_git_branches_checkout_url do %>
+                <div class="form-group">
+                  <%= label_tag :name %>
+                  <%= text_field_tag :name, nil, placeholder: "Enter the name of the branch to switch to...", class: "form-control" %>
+                </div>
+                <%= button_tag "Switch to branch", class: "btn btn-primary btn-block" %>
+              <% end %>
             </div>
           </div>
           <pre>
