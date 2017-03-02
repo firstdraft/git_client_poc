@@ -33,9 +33,21 @@
           </div>
 
         <% else %>
-          <pre>
-            <%= simple_format @status %>
 
+          <div class="row">
+            <div class="col">
+              <pre>
+                <%= simple_format @status %>
+              </pre>
+            </div>
+
+            <div class="col">
+              <pre>
+                <%= simple_format @branches %>
+              </pre>
+            </div>
+          </div>
+          <pre>
             <%= simple_format @log %>
           </pre>
         <% end %>
@@ -52,9 +64,7 @@
       </h2>
 
       <div class="card-block">
-        <pre>
-          <%= simple_format @branches %>
-        </pre>
+
       </div>
     </div>
   </div>
