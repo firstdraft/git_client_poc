@@ -6,7 +6,7 @@
       </h2>
 
       <div class="card-block">
-        <% if @diff_html.present? %>
+        <% if false %>
           <iframe srcdoc="<%= @diff_html %>" width="100%" height="400">
           </iframe>
 
@@ -42,27 +42,39 @@
             </div>
 
             <div class="col">
-              <%= form_tag dev_git_branches_url do %>
-                <div class="form-group">
-                  <%= label_tag :name %>
-                  <%= text_field_tag :name, nil, placeholder: "Enter the name of the branch to create...", class: "form-control" %>
-                </div>
-                <%= button_tag "Create a new branch", class: "btn btn-primary btn-block" %>
-              <% end %>
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-success">
+                  Create a new branch
+                </li>
 
-              <h3>Branch list</h3>
+                <li class="list-group-item">
+                  <%= form_tag dev_git_branches_url, class: "full-width mb-2" do %>
+                  <div class="form-group">
+                    <%= label_tag :name, nil, class: "sr-only" %>
+                    <%= text_field_tag :name, nil, placeholder: "Enter the name of the branch to create...", class: "form-control" %>
+                  </div>
+                  <%= button_tag "Create branch", class: "btn btn-success btn-block" %>
+                  <% end %>
+                </li>
 
-              <pre>
-                <%= simple_format @branches %>
-              </pre>
+                <li class="list-group-item list-group-item-info">
+                  Existing branches
+                </li>
 
-              <%= form_tag dev_git_branches_checkout_url, method: :get do %>
-                <div class="form-group">
-                  <%= label_tag :name %>
-                  <%= text_field_tag :name, nil, placeholder: "Enter the name of the branch to switch to...", class: "form-control" %>
-                </div>
-                <%= button_tag "Switch to branch", class: "btn btn-primary btn-block" %>
-              <% end %>
+                <li class="list-group-item">
+                  <pre>
+                    <%= simple_format @branches %>
+                  </pre>
+
+                  <%= form_tag dev_git_branches_checkout_url, method: :get, class: "full-width mb-2" do %>
+                    <div class="form-group">
+                      <%= label_tag :name, nil, class: "sr-only" %>
+                      <%= text_field_tag :name, nil, placeholder: "Enter the name of the branch to switch to...", class: "form-control" %>
+                    </div>
+                    <%= button_tag "Switch to branch", class: "btn btn-primary btn-block" %>
+                  <% end %>
+                </li>
+              </ul>
             </div>
           </div>
           <pre>
