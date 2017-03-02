@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get "log" => "commands#log"
       resources :branches
       resources :commits
+      delete "commits/stash" => "commits#stash"
     end
   end
 
