@@ -1,5 +1,5 @@
 class Dev::Git::CommandsController < ApplicationController
-  def log
+  def status
     Dir.chdir(Rails.root) do
 
       @current_branch = `git symbolic-ref --short HEAD`
