@@ -94,6 +94,13 @@
               </pre>
 
               <%= link_to "git push", dev_git_commits_push_url, class: "btn btn-primary btn-block" %>
+
+              <p class="lead">
+                Most recent changes:
+              </p>
+
+              <iframe srcdoc="<%= @show_html %>" width="100%" height="200" class="mb-3">
+              </iframe>
             </div>
 
             <div class="col">

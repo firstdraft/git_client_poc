@@ -13,6 +13,11 @@ class Dev::Git::CommandsController < ApplicationController
           gsub("<a class=\"d2h-file-switch d2h-show\">show</a>", "")
       else
         @status = `git status`
+
+        @show_html = `diff2html --style=side --output=stdout -- -M HEAD~1`.
+          gsub("<h1>Diff to HTML by <a href=\"https://github.com/rtfpessoa\">rtfpessoa</a></h1>", "").
+          gsub("<a class=\"d2h-file-switch d2h-hide\">hide</a>", "").
+          gsub("<a class=\"d2h-file-switch d2h-show\">show</a>", "")
       end
 
       @branches = `git branch`
