@@ -25,6 +25,6 @@ class Dev::Git::BranchesController < ApplicationController
       `git branch -D #{params[:name].parameterize}`
     end
 
-    redirect_to dev_git_url, notice: "Switched to branch #{params[:name]}."
+    redirect_to dev_git_url, notice: "Deleted branch #{params[:name]}."
   end
 end
