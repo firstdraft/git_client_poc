@@ -19,9 +19,9 @@ class Dev::Git::CommitsController < ApplicationController
 
   def push
     Dir.chdir(Rails.root) do
-      `git push`
+      @result = `git push`
     end
 
-    redirect_to dev_git_url, notice: "Pushed to GitHub."
+    redirect_to dev_git_url, notice: @result
   end
 end
