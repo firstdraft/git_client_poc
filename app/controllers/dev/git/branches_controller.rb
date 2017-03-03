@@ -1,7 +1,9 @@
 class Dev::Git::BranchesController < ApplicationController
   def create
     Dir.chdir(Rails.root) do
-      @status = `git status`
+      @status = `git checkout -b #{params[:name]}`
+
+      redirect_to dev_git_url, notice: "Created branch #{params[:name]}."
     end
   end
 
@@ -10,6 +12,6 @@ class Dev::Git::BranchesController < ApplicationController
       `git checkout #{params[:name]}`
     end
 
-    redirect_to dev_git_url, notice: "Switched to #{params[:name]}." 
+    redirect_to dev_git_url, notice: "Switched to branch #{params[:name]}."
   end
 end
