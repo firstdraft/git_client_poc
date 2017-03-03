@@ -21,10 +21,14 @@ class Dev::Git::BranchesController < ApplicationController
   end
 
   def destroy
-    Dir.chdir(Rails.root) do
-      `git branch -D #{params[:name].parameterize}`
-    end
+    if params[:name].parameterize != "master"
+      Dir.chdir(Rails.root) do
+        `git branch -D #{params[:name].parameterize}`
+      end
 
-    redirect_to dev_git_url, notice: "Deleted branch #{params[:name]}."
+      redirect_to dev_git_url, notice: "Deleted branch #{params[:name]}."
+    else
+      redirect_to dev_git_url, alert: "It's not a great idea to delete the master branch. If you really want to, you're on your own!"
+    end
   end
 end
