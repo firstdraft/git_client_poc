@@ -141,6 +141,14 @@
                     </div>
                     <%= button_tag "Switch to branch", class: "btn btn-primary btn-block" %>
                   <% end %>
+
+                  <%= form_tag dev_git_branches_delete_url, method: :delete, class: "full-width mb-2" do %>
+                    <div class="form-group">
+                      <%= label_tag :name, nil, class: "sr-only" %>
+                      <%= text_field_tag :name, nil, placeholder: "Enter the name of the branch to delete...", class: "form-control" %>
+                    </div>
+                    <%= button_tag "Delete branch", class: "btn btn-danger btn-block" %>
+                  <% end %>
                 </li>
               </ul>
             </div>
