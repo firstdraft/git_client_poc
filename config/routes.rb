@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace :git do
       get "/" => "commands#status"
       get "status" => "commands#status"
-      resource :branch, only: [:create, :show, :delete]
+      resource :branch, only: [:create, :show, :destroy]
       resources :commits, only: :create
       post "commits/stash"
       get "commits/push"
