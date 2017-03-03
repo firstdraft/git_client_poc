@@ -22,6 +22,6 @@ class Dev::Git::CommitsController < ApplicationController
       @result = `git push`
     end
 
-    redirect_to dev_git_url, notice: @result
+    redirect_to dev_git_url, notice: "Pushed to GitHub."
   end
 end
