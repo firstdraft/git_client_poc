@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       get "status" => "commands#status"
       resources :branches, only: [:create]
       get "branches/checkout"
-      resources :commits
+      resources :commits, only: :create
       post "commits/stash"
       get "commits/push"
     end
