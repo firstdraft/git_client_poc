@@ -133,7 +133,9 @@
                   <pre>
                     <%= simple_format @branches %>
                   </pre>
+                </li>
 
+                <li class="list-group-item">
                   <%= form_tag dev_git_branches_checkout_url, method: :get, class: "full-width mb-3" do %>
                     <div class="form-group">
                       <%= label_tag :name, nil, class: "sr-only" %>
@@ -141,7 +143,9 @@
                     </div>
                     <%= button_tag "Switch to branch", class: "btn btn-primary btn-block" %>
                   <% end %>
-<hr>
+                </li>
+
+                <li class="list-group-item">
                   <%= form_tag dev_git_branches_delete_url, method: :delete, class: "full-width mb-2" do %>
                     <div class="form-group">
                       <%= label_tag :name, nil, class: "sr-only" %>
