@@ -2,7 +2,11 @@
   <div class="col">
     <div class="card">
       <h1 class="card-header">
-        <code>git status</code>
+        <% if @diff_html.present? %>
+          On branch <code><%= @current_branch %></code>
+        <% else %>
+          <code>git status</code>
+        <% end %>
       </h1>
 
       <div class="card-block">
