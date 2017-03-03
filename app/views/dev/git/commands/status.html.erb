@@ -141,18 +141,20 @@
   </div>
 </div>
 
-<div class="row mb-4">
-  <div class="col">
-    <div class="card">
-      <h2 class="card-header">
-        Log
-      </h2>
+<% if @diff_html.present? %>
+  <div class="row mb-4">
+    <div class="col">
+      <div class="card">
+        <h2 class="card-header">
+          Log
+        </h2>
 
-      <div class="card-block">
-        <pre>
-          <%= simple_format @log %>
-        </pre>
+        <div class="card-block">
+          <pre>
+            <%= simple_format @log %>
+          </pre>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
