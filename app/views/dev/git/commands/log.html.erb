@@ -6,8 +6,6 @@
           On branch <code><%= @current_branch %></code>
         <% else %>
           <code>git status</code>
-
-          <%= link_to "git push", "#", class: "btn btn-primary" %>
         <% end %>
       </h1>
 
@@ -94,6 +92,8 @@
               <pre>
                 <%= simple_format @status %>
               </pre>
+
+              <%= link_to "git push", "#", class: "btn btn-primary" %>
             </div>
 
             <div class="col">
