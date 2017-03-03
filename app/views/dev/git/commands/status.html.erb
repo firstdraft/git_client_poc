@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="card-block">
-                      <%= form_tag dev_git_branches_url, class: "full-width mb-2" do %>
+                      <%= form_tag dev_git_branch_url, class: "full-width mb-2" do %>
                         <div class="form-group">
                           <%= label_tag :name, nil, class: "sr-only" %>
                           <%= text_field_tag :name, nil, placeholder: "Enter a name for the branch to create...", class: "form-control" %>
@@ -116,7 +116,7 @@
                 </li>
 
                 <li class="list-group-item">
-                  <%= form_tag dev_git_branches_url, class: "full-width mb-2" do %>
+                  <%= form_tag dev_git_branch_url, class: "full-width mb-2" do %>
                   <div class="form-group">
                     <%= label_tag :name, nil, class: "sr-only" %>
                     <%= text_field_tag :name, nil, placeholder: "Enter a name for the branch to create...", class: "form-control" %>
@@ -136,7 +136,7 @@
                 </li>
 
                 <li class="list-group-item">
-                  <%= form_tag dev_git_branches_checkout_url, method: :get, class: "full-width" do %>
+                  <%= form_tag dev_git_branch_url, method: :get, class: "full-width" do %>
                     <div class="form-group">
                       <%= label_tag :name, nil, class: "sr-only" %>
                       <%= text_field_tag :name, nil, placeholder: "Enter the name of the branch to switch to...", class: "form-control" %>
@@ -172,7 +172,7 @@
 
       <div class="card-block">
         <p class="lead">Do you want to jump back in time and go down a different path?</p>
-        <%= form_tag dev_git_branches_url do %>
+        <%= form_tag dev_git_branch_url do %>
           <div class="form-group">
             <%= label_tag :commit_hash, "Branch off of" %>
             <%= text_field_tag :commit_hash, nil, placeholder: "Enter the 6 digit number preceding the commit you want to branch off of...", class: "form-control" %>
