@@ -183,7 +183,7 @@
         <%= form_tag dev_git_branch_url do %>
           <div class="form-group">
             <%= label_tag :commit_hash, "Branch off of" %>
-            <%= text_field_tag :commit_hash, nil, placeholder: "Enter the 6 digit number preceding the commit you want to branch off of...", class: "form-control" %>
+            <%= text_field_tag :commit_hash, nil, placeholder: "Enter the sequence of digits preceding the commit (it's \"hash\") that you want to branch off of...", class: "form-control" %>
           </div>
 
           <div class="form-group">
