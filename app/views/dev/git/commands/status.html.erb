@@ -93,9 +93,7 @@
                 <%= simple_format @status %>
               </pre>
 
-              <% unless @status.include?("Your branch is up-to-date") %>
-                <%= link_to "git push", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4" %>
-              <% end %>
+              <%= link_to "git push", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4 #{@status.include?("Your branch is up-to-date") ? "disabled" : "" }" %>
 
 
               <p class="lead">
