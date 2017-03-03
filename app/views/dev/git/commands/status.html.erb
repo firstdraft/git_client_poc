@@ -132,29 +132,24 @@
               </ul>
             </div>
           </div>
-          <pre>
-            <%= simple_format @log %>
-          </pre>
         <% end %>
       </div>
     </div>
   </div>
 </div>
 
-<% if @diff_html.present? %>
-  <div class="row mb-4">
-    <div class="col">
-      <div class="card">
-        <h2 class="card-header">
-          Log
-        </h2>
+<div class="row mb-4">
+  <div class="col">
+    <div class="card">
+      <h2 class="card-header">
+        History
+      </h2>
 
-        <div class="card-block">
-          <pre>
-            <%= simple_format @log %>
-          </pre>
-        </div>
+      <div class="card-block">
+        <pre>
+          <%= simple_format @log %>
+        </pre>
       </div>
     </div>
   </div>
-<% end %>
+</div>
