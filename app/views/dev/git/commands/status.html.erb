@@ -93,7 +93,10 @@
                 <%= simple_format @status %>
               </pre>
 
-              <%= link_to "git push", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4" %>
+              <% unless @status.include?("Your branch is up-to-date") %>
+                <%= link_to "git push", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4" %>
+              <% end %>
+
 
               <p class="lead">
                 Your last commit:
