@@ -14,15 +14,15 @@ class Dev::Git::BranchesController < ApplicationController
 
   def show
     Dir.chdir(Rails.root) do
-      `git checkout #{params[:name]}`
+      `git checkout #{params[:name].parameterize}`
     end
 
     redirect_to dev_git_url, notice: "Switched to branch #{params[:name]}."
   end
 
-  def delete
+  def destroy
     Dir.chdir(Rails.root) do
-      `git checkout #{params[:name]}`
+      `git branch -D #{params[:name].parameterize}`
     end
 
     redirect_to dev_git_url, notice: "Switched to branch #{params[:name]}."
