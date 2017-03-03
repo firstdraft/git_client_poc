@@ -42,7 +42,7 @@
                       <%= text_area_tag :description, nil, placeholder: "Enter a longer description of your changes (optional)...", class: "form-control" %>
                     </div>
 
-                    <%= button_tag "Commit to #{@current_branch}", class: "btn btn-primary btn-block" %>
+                    <%= button_tag "Commit to #{@current_branch}", class: "btn btn-success btn-block" %>
                   <% end %>
                 </div>
               </div>
@@ -62,7 +62,7 @@
                           <%= label_tag :name, nil, class: "sr-only" %>
                           <%= text_field_tag :name, nil, placeholder: "Enter a name for the branch to create...", class: "form-control" %>
                         </div>
-                        <%= button_tag "Create a new branch", class: "btn btn-success btn-block" %>
+                        <%= button_tag "Create a new branch", class: "btn btn-primary btn-block" %>
                       <% end %>
                     </div>
                   </div>
@@ -121,7 +121,7 @@
                     <%= label_tag :name, nil, class: "sr-only" %>
                     <%= text_field_tag :name, nil, placeholder: "Enter a name for the branch to create...", class: "form-control" %>
                   </div>
-                  <%= button_tag "Create a new branch", class: "btn btn-success btn-block" %>
+                  <%= button_tag "Create a new branch", class: "btn btn-primary btn-block" %>
                   <% end %>
                 </li>
 
@@ -159,6 +159,25 @@
       </h2>
 
       <div class="card-block">
+        <p class="lead">Do you want to jump back in time and go down a different path?</p>
+        <%= form_tag dev_git_branches_url do %>
+          <div class="form-group">
+            <%= label_tag :commit_hash, "Branch off of" %>
+            <%= text_field_tag :commit_hash, nil, placeholder: "Enter the 6 digit number preceding the commit you want to branch off of...", class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= label_tag :name, "Branch name" %>
+            <%= text_field_tag :name, nil, placeholder: "Enter a name for the new branch...", class: "form-control" %>
+          </div>
+
+          <% if @diff_html.present? %>
+            <%= button_tag "Can't go back in time while you have pending changes. Commit or discard them first.", class: "btn btn-primary btn-block", disabled: true %>
+          <% else %>
+            <%= button_tag "Create a new branch off of previous commit", class: "btn btn-primary btn-block" %>
+          <% end %>
+        <% end %>
+
         <pre>
           <%= simple_format @log %>
         </pre>
