@@ -7,8 +7,8 @@ module ApplicationHelper
     elsif name.to_f.to_s == name
       name.to_f.humanize
     else
-      name.to_f.humanize + " " + SecureRandom.hex(6)
-    end
+      (name.to_f.humanize + " " + SecureRandom.hex(6))
+    end.parameterize.underscore
   end
 
   def valid_variable_name?(var_name)

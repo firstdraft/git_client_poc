@@ -230,7 +230,7 @@ $(document).ready(function() {
     var <%= branch_name %> = gitgraph.branch("<%= branch_name %>");
     <% walker.push(branch.target_id) %>
     <% walker.each do |commit| %>
-      <%= branch_name %>.commit("<%= commit.message %>");
+      <%= branch_name %>.commit("<%= j(commit.message) %>");
     <% end %>
   <% end %>
 });
