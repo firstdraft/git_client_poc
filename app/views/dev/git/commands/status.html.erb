@@ -146,9 +146,9 @@
                     <%= branch %>
 
                     <div class="btn-group">
-                      <%= link_to icon("exchange"), dev_git_branch_url(name: branch), class: "btn btn-primary btn-sm", title: "Switch to branch #{branch}", data: { toggle: "tooltip" } %>
+                      <%= link_to icon("exchange"), dev_git_branch_url(name: branch), class: "tooltip btn btn-primary btn-sm", title: "Switch to branch #{branch}", data: { toggle: "tooltip" } %>
 
-                      <%= link_to icon("trash-o"), dev_git_branch_url(name: branch), method: :delete, class: "btn btn-warning btn-sm", data: { toggle: "tooltip", confirm: "Are you sure you want to delete #{branch}?" }, title: "Delete branch #{branch}" %>
+                      <%= link_to icon("trash-o"), dev_git_branch_url(name: branch), method: :delete, class: "tooltip btn btn-warning btn-sm", data: { toggle: "tooltip", confirm: "Are you sure you want to delete #{branch}?" }, title: "Delete branch #{branch}" %>
                     </div>
                   </li>
                 <% end %>
