@@ -61,3 +61,8 @@ group :development do
   gem "guard-livereload", "~> 2.5", require: false
   gem "rack-livereload"
 end
+
+gem "rugged", git: "https://github.com/libgit2/rugged.git", submodules: true
+gem "git"
+gem "awesome_print"
+gem 'pry-rails', :group => :development
