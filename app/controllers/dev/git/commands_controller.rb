@@ -23,7 +23,9 @@ class Dev::Git::CommandsController < ApplicationController
 
       @branches = `git branch --sort=-committerdate`.split - ["*"]
 
-      @log = `git log --branches --remotes --tags --graph --oneline --decorate --pretty=format:"#%h %d %s - %cr"`
+      # @log = `git log --branches --remotes --tags --graph --oneline --decorate --pretty=format:"#%h %d %s - %cr"`
+
+      # @log = `git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --branches --remotes --tags | sh ansi2html.sh --bg=dark --palette=solarized`
     end
   end
 end
