@@ -19,11 +19,9 @@
             <pre>
               <%= simple_format @status.
                     gsub("(use \"git add <file>...\" to include in what will be committed)\n\n", "").
-                    gsub("nothing added to commit but untracked files present (use \"git add\" to track)", "")%>
+                    gsub("(use \"git add\" to track)\n", "")%>
             </pre>
           <% end %>
-          <%= console %>
-
 
           <% if @diff_html.present? %>
             <iframe srcdoc="<%= @diff_html %>" width="100%" height="400" class="mb-3">
