@@ -200,6 +200,11 @@
         <pre>
           <%= simple_format @log %>
         </pre>
+
+        <% if @log_html.present? %>
+          <iframe srcdoc="<%= @log_html %>" width="100%" height="800" class="mb-3">
+          </iframe>
+        <% end %>
       </div>
     </div>
   </div>
