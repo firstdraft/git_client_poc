@@ -18,5 +18,5 @@
 //= require_tree .
 
 $(function() {
-  $(".tooltip").tooltip();
+  $('[data-toggle="tooltip"]').tooltip();
 });
