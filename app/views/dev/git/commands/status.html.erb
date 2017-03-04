@@ -199,11 +199,6 @@
         <% end %>
 
         <pre>
-          <% repo = Rugged::Repository.new(Rails.root.to_s) %>
-          <%= console %>
-        </pre>
-
-        <pre>
           <%= simple_format @log %>
         </pre>
 
@@ -225,18 +220,18 @@ $(document).ready(function() {
     // mode: "compact"
   });
 
-  var master = gitgraph.branch("master");
+  <% repo = Rugged::Repository.new(".") %>
 
-  gitgraph.commit().commit().commit();         // 3 commits upon HEAD
-  var develop = gitgraph.branch("develop");    // New branch from HEAD
-  var myfeature = develop.branch("myfeature"); // New branch from develop
+  <% walker = Rugged::Walker.new(repo) %>
+  <% walker.sorting(Rugged::SORT_REVERSE) %>
 
-  // Well, if you need to go deeper…
-
-  var hotfix = gitgraph.branch({
-    parentBranch: develop,
-    name: "hotfix",
-    column: 2             // which column index it should be displayed in
-  });
+  <% repo.branches.each do |branch| %>
+    <% branch_name = javascript_branch_name(branch.name) %>
+    var <%= branch_name %> = gitgraph.branch("<%= branch_name %>");
+    <% walker.push(branch.target_id) %>
+    <% walker.each do |commit| %>
+      <%= branch_name %>.commit("<%= commit.message %>");
+    <% end %>
+  <% end %>
 });
 </script>

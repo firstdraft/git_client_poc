@@ -65,4 +65,5 @@ end
 gem "rugged", git: "https://github.com/libgit2/rugged.git", submodules: true
 gem "git"
 gem "awesome_print"
-gem 'pry-rails', :group => :development
+gem "pry-rails", :group => :development
+gem "humanize"

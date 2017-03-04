@@ -24,7 +24,7 @@ class Dev::Git::CommandsController < ApplicationController
 
       @branches = `git branch --sort=-committerdate`
 
-      @log = `git log --branches --remotes --tags --graph --oneline --decorate --pretty=format:"#%h %d %s - %cr"`
+      @log = `git log --branches --remotes --tags --graph --oneline --decorate --pretty=format:"#%H %d %s - %cr"`
     end
   end
 end
