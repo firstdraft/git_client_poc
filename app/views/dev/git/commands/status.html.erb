@@ -10,7 +10,7 @@
       </h1>
 
       <div class="card-block">
-        <% if @diff_html.present? %>
+        <% if false %>
           <p class="h4 mb-3 text-center">
             You have changes
           </p>
@@ -93,7 +93,7 @@
                 <%= simple_format @status %>
               </pre>
 
-              <% if @status.include?("Your branch is up-to-date") %>
+              <% if @status.try(:include?, "Your branch is up-to-date") %>
                 <%= link_to "Can't git push — already up-to-date", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4 disabled" %>
               <% else %>
                 <%= link_to "git push", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4" %>
@@ -109,8 +109,6 @@
 
               <%= link_to "Show latest commit", "#latest_diff_html", class: "btn btn-secondary btn-block mb-4", data: { toggle: "collapse"}  %>
 
-
-
               <div id="latest_diff_html" class="collapse">
                 <iframe srcdoc="<%= @latest_diff_html %>" width="100%" height="400" class="mb-3">
                 </iframe>
@@ -119,8 +117,8 @@
 
             <div class="col">
               <ul class="list-group">
-                <li class="list-group-item list-group-item-success">
-                  Create a new branch
+                <li class="list-group-item list-group-item-info">
+                  Branches
                 </li>
 
                 <li class="list-group-item">
@@ -133,14 +131,14 @@
                   <% end %>
                 </li>
 
-                <li class="list-group-item list-group-item-info">
-                  Existing branches
-                </li>
                 <% @branches.each do |branch| %>
                   <li class="list-group-item">
+                    <%= link_to "Switch", dev_git_branch_url(name: branch), class: "btn btn-primary" %>
+                    
                     <%= branch %>
                   </li>
                 <% end %>
+
                 <li class="list-group-item">
                   <%= form_tag dev_git_branch_url, method: :get, class: "full-width" do %>
                     <div class="form-group">
