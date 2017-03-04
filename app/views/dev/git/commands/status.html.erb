@@ -10,7 +10,7 @@
       </h1>
 
       <div class="card-block">
-        <% if @diff_html.present? %>
+        <% unless @status.include?("clean") %>
           <p class="h4 mb-3 text-center">
             You have changes
           </p>
