@@ -10,7 +10,7 @@
       </h1>
 
       <div class="card-block">
-        <% if false %>
+        <% if @diff_html.present? %>
           <p class="h4 mb-3 text-center">
             You have changes
           </p>
@@ -93,7 +93,7 @@
                 <%= simple_format @status %>
               </pre>
 
-              <% if @status.try(:include?, "Your branch is up-to-date") %>
+              <% if @status.include?("Your branch is up-to-date") %>
                 <%= link_to "Can't git push — already up-to-date", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4 disabled" %>
               <% else %>
                 <%= link_to "git push", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4" %>
@@ -127,37 +127,21 @@
                     <%= label_tag :name, nil, class: "sr-only" %>
                     <%= text_field_tag :name, nil, placeholder: "Enter a name for the branch to create...", class: "form-control" %>
                   </div>
-                  <%= button_tag "Create a new branch", class: "btn btn-primary btn-block" %>
+                  <%= button_tag "Create a new branch", class: "btn btn-success btn-block" %>
                   <% end %>
                 </li>
 
                 <% @branches.each do |branch| %>
-                  <li class="list-group-item">
-                    <%= link_to "Switch", dev_git_branch_url(name: branch), class: "btn btn-primary" %>
-                    
+                  <li class="list-group-item  justify-content-between">
                     <%= branch %>
+
+                    <div class="btn-group">
+                      <%= link_to icon("exchange"), dev_git_branch_url(name: branch), class: "btn btn-primary btn-sm", title: "Switch to branch #{branch}" %>
+
+                      <%= link_to icon("trash-o"), dev_git_branch_url(name: branch), method: :delete, class: "btn btn-warning btn-sm", data: { confirm: "Are you sure you want to delete #{branch}?" }, title: "Delete branch #{branch}" %>
+                    </div>
                   </li>
                 <% end %>
-
-                <li class="list-group-item">
-                  <%= form_tag dev_git_branch_url, method: :get, class: "full-width" do %>
-                    <div class="form-group">
-                      <%= label_tag :name, nil, class: "sr-only" %>
-                      <%= text_field_tag :name, nil, placeholder: "Enter the name of the branch to switch to...", class: "form-control" %>
-                    </div>
-                    <%= button_tag "Switch to branch", class: "btn btn-primary btn-block" %>
-                  <% end %>
-                </li>
-
-                <li class="list-group-item">
-                  <%= form_tag dev_git_branch_url, method: :delete, class: "full-width" do %>
-                    <div class="form-group">
-                      <%= label_tag :name, nil, class: "sr-only" %>
-                      <%= text_field_tag :name, nil, placeholder: "Enter the name of the branch to delete...", class: "form-control" %>
-                    </div>
-                    <%= button_tag "Delete branch", class: "btn btn-danger btn-block", data: { confirm: "Are you sure you want to delete a branch?" } %>
-                  <% end %>
-                </li>
               </ul>
             </div>
           </div>
