@@ -53,7 +53,11 @@
                       <%= text_area_tag :description, nil, placeholder: "Enter a longer description of your changes (optional)...", class: "form-control" %>
                     </div>
 
-                    <%= button_tag "Commit to #{@current_branch}", class: "btn btn-primary btn-block" %>
+                    <%= button_tag class: "btn btn-primary btn-block", data: { toggle: "tooltip" }, title: "git add, git commit" do %>
+                      <%= octicon "git-commit", class: "mr-1" %>
+
+                      Commit to <%= @current_branch %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
@@ -73,7 +77,7 @@
                           <%= label_tag :name, nil, class: "sr-only" %>
                           <%= text_field_tag :name, nil, placeholder: "Enter a name for the branch to create...", class: "form-control" %>
                         </div>
-                        <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip" }, title: "git branch" do %>
+                        <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip" }, title: "git branch, git checkout" do %>
 
                           <%= octicon "git-branch", class: "mr-1" %>
 
@@ -93,7 +97,11 @@
                     </div>
 
                     <div class="card-block">
-                      <%= button_to "Discard all changes", dev_git_commits_stash_url, class: "btn btn-danger btn-block", method: :post, data: { confirm: "Are you sure you want to discard these changes?" } %>
+                      <%= button_to dev_git_commits_stash_url, class: "btn btn-danger btn-block", method: :post, data: { confirm: "Are you sure you want to discard these changes?", toggle: "tooltip" }, title: "git add, git stash" do %>
+                        <%= octicon "trashcan", class: "mr-1" %>
+
+                        Discard all changes
+                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -147,7 +155,7 @@
                       <%= label_tag :name, "Go ahead, experiment!" %>
                       <%= text_field_tag :name, nil, placeholder: "Enter a name for the new branch...", class: "form-control" %>
                     </div>
-                    <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip" }, title: "git branch" do %>
+                    <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip" }, title: "git branch, git checkout" do %>
                       <%= octicon "git-branch", class: "mr-1" %>
 
                       Create branch
