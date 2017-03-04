@@ -93,9 +93,7 @@
                 <%= simple_format @status %>
               </pre>
 
-              <% if @status.include?("untracked files present") %>
-                <%= link_to "git add", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4" %>
-              <% elsif @status.include?("Your branch is up-to-date") %>
+              <% if @status.include?("Your branch is up-to-date") %>
                 <%= link_to "Can't git push — already up-to-date", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4 disabled" %>
               <% else %>
                 <%= link_to "git push", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4" %>
