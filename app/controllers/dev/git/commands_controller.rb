@@ -22,7 +22,7 @@ class Dev::Git::CommandsController < ApplicationController
         @latest_commit_message = `git log -1 --pretty=%B`
       end
 
-      @branches = `git branch --sort=-committerdate`
+      @branches = `git branch --sort=-committerdate`.split - ["*"]
 
       @log = `git log --branches --remotes --tags --graph --oneline --decorate --pretty=format:"#%h %d %s - %cr"`
     end

@@ -136,13 +136,11 @@
                 <li class="list-group-item list-group-item-info">
                   Existing branches
                 </li>
-
-                <li class="list-group-item">
-                  <pre>
-                    <%= simple_format @branches %>
-                  </pre>
-                </li>
-
+                <% @branches.each do |branch| %>
+                  <li class="list-group-item">
+                    <%= branch %>
+                  </li>
+                <% end %>
                 <li class="list-group-item">
                   <%= form_tag dev_git_branch_url, method: :get, class: "full-width" do %>
                     <div class="form-group">
