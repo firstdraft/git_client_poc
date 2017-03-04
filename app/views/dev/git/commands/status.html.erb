@@ -17,7 +17,7 @@
 
           <% if @status.include?("untracked files") %>
             <pre>
-              <%= simple_format @status %>
+              <%= simple_format @status.gsub("nothing added to commit but untracked files present (use \"git add\" to track)", "") %>
             </pre>
           <% end %>
 
