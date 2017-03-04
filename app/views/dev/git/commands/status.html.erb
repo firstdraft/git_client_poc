@@ -42,7 +42,7 @@
                       <%= text_area_tag :description, nil, placeholder: "Enter a longer description of your changes (optional)...", class: "form-control" %>
                     </div>
 
-                    <%= button_tag "Commit to #{@current_branch}", class: "btn btn-success btn-block" %>
+                    <%= button_tag "Commit to #{@current_branch}", class: "btn btn-primary btn-block" %>
                   <% end %>
                 </div>
               </div>
@@ -62,7 +62,7 @@
                           <%= label_tag :name, nil, class: "sr-only" %>
                           <%= text_field_tag :name, nil, placeholder: "Enter a name for the branch to create...", class: "form-control" %>
                         </div>
-                        <%= button_tag "Create a new branch", class: "btn btn-primary btn-block" %>
+                        <%= button_tag "Create a new branch", class: "btn btn-success btn-block" %>
                       <% end %>
                     </div>
                   </div>
@@ -174,7 +174,7 @@
           <% if @diff_html.present? %>
             <%= button_tag "Can't go back in time while you have pending changes. Commit or discard them first.", class: "btn btn-primary btn-block", disabled: true %>
           <% else %>
-            <%= button_tag "Create a new branch off of previous commit", class: "btn btn-primary btn-block" %>
+            <%= button_tag "Create a new branch off of previous commit", class: "btn btn-success btn-block" %>
           <% end %>
         <% end %>
 
