@@ -118,7 +118,7 @@
                 <%= @latest_commit_message %>
               </blockquote>
 
-              <%= link_to "#latest_diff_html", class: "btn btn-secondary btn-block mb-4", data: { toggle: "collapse"} do %>
+              <%= link_to "#latest_diff_html", class: "btn btn-secondary btn-block mb-4", data: { toggle: "collapse tooltip"}, title: "git show" do %>
                 <%= octicon "eye", class: "mr-1" %>
 
                 Show latest commit
