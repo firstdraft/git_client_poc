@@ -202,7 +202,7 @@
           <% if @diff_html.present? %>
             <%= button_tag "Can't go back in time while you have pending changes. Commit or discard them first.", class: "btn btn-primary btn-block", disabled: true %>
           <% else %>
-            <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip" }, title: "git branch" do %>
+            <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip" }, title: "git checkout, git branch" do %>
               <%= octicon "git-branch", class: "mr-1" %>
 
               Create a new branch off of previous commit
