@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def javascript_branch_name(name)
+  def variablize_branch_name(name)
     if valid_variable_name?(name)
       name
     elsif name.to_i.to_s == name
@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def valid_variable_name?(var_name)
-    Object.new.local_variable_set (var_name).to_sym, nil
+    Object.new.instance_variable_set ("@" + var_name).to_sym, nil
     true
   rescue NameError
     false

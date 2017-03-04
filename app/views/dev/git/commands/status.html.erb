@@ -226,11 +226,13 @@ $(document).ready(function() {
   <% walker.sorting(Rugged::SORT_REVERSE) %>
 
   <% repo.branches.each do |branch| %>
-    <% branch_name = javascript_branch_name(branch.name) %>
+    <% if branch.name == "master" %>
+    <% branch_name = variablize_branch_name(branch.name) %>
     var <%= branch_name %> = gitgraph.branch("<%= branch_name %>");
     <% walker.push(branch.target_id) %>
     <% walker.each do |commit| %>
       <%= branch_name %>.commit("<%= j(commit.message) %>");
+    <% end %>
     <% end %>
   <% end %>
 });
