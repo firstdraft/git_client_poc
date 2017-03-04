@@ -172,7 +172,7 @@
                     <%= branch %>
 
                     <div class="btn-group">
-                      <%= link_to octicon("git-compare"), dev_git_branch_url(name: branch), class: "btn btn-primary btn-sm", title: "Switch to branch<br><code>git checkout #{branch}</code>", data: { toggle: "tooltip" } %>
+                      <%= link_to octicon("git-compare"), dev_git_branch_url(name: branch), class: "btn btn-primary btn-sm", title: "Switch to branch<br><code>git checkout #{branch}</code>", data: { toggle: "tooltip", html: true } %>
 
                       <%= link_to octicon("trashcan"), dev_git_branch_url(name: branch), method: :delete, class: "btn btn-warning btn-sm", data: { toggle: "tooltip", confirm: "Are you sure you want to delete #{branch}?" }, title: "Delete branch #{branch}" %>
                     </div>
