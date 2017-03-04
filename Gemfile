@@ -57,7 +57,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 gem "font-awesome-sass", "~> 4.7.0"
-gem "octicons"
+gem "octicons_helper"
 
 group :development do
   gem "guard-livereload", "~> 2.5", require: false

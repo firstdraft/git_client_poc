@@ -10,6 +10,7 @@
       </h1>
 
       <div class="card-block">
+        <%# if false %>
         <% unless @status.include?("nothing to commit, working directory clean") %>
           <p class="h4 mb-3 text-center">
             You have changes
@@ -103,10 +104,10 @@
                 <%= simple_format @status %>
               </pre>
 
-              <% if @status.include?("Your branch is up-to-date") %>
-                <%= link_to "Can't git push — already up-to-date", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4 disabled" %>
-              <% else %>
-                <%= link_to "git push", dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4" %>
+              <%= link_to dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4", data: { toggle: "tooltip" }, title: "git push" do %>
+                <%= octicon("repo-push", class: "mr-1") %>
+
+                Push to GitHub
               <% end %>
 
               <p>
@@ -127,18 +128,26 @@
 
             <div class="col">
               <ul class="list-group">
-                <li class="list-group-item list-group-item-info">
-                  Branches
+                <li class="list-group-item list-group-item-success">
+                  New Branch
                 </li>
 
                 <li class="list-group-item">
                   <%= form_tag dev_git_branch_url, class: "full-width mb-2" do %>
-                  <div class="form-group">
-                    <%= label_tag :name, "Branch off from your current branch" %>
-                    <%= text_field_tag :name, nil, placeholder: "Enter a name for the branch to create...", class: "form-control" %>
-                  </div>
-                  <%= button_tag "Create a new branch", class: "btn btn-success btn-block" %>
+                    <div class="form-group">
+                      <%= label_tag :name, "Go ahead, experiment!" %>
+                      <%= text_field_tag :name, nil, placeholder: "Enter a name for the new branch...", class: "form-control" %>
+                    </div>
+                    <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip" }, title: "git branch" do %>
+                      <%= octicon "git-branch", class: "mr-1" %>
+
+                      Create branch
+                    <% end %>
                   <% end %>
+                </li>
+
+                <li class="list-group-item list-group-item-info">
+                  Existing branches
                 </li>
 
                 <% @branches.each do |branch| %>
@@ -146,9 +155,9 @@
                     <%= branch %>
 
                     <div class="btn-group">
-                      <%= link_to icon("exchange"), dev_git_branch_url(name: branch), class: "btn btn-primary btn-sm", title: "Switch to branch #{branch}", data: { toggle: "tooltip" } %>
+                      <%= link_to octicon("git-compare"), dev_git_branch_url(name: branch), class: "btn btn-primary btn-sm", title: "Switch to branch #{branch}", data: { toggle: "tooltip" } %>
 
-                      <%= link_to Octicons::Octicon.new("trashcan"), dev_git_branch_url(name: branch), method: :delete, class: "btn btn-warning btn-sm", data: { toggle: "tooltip", confirm: "Are you sure you want to delete #{branch}?" }, title: "Delete branch #{branch}" %>
+                      <%= link_to octicon("trashcan"), dev_git_branch_url(name: branch), method: :delete, class: "btn btn-warning btn-sm", data: { toggle: "tooltip", confirm: "Are you sure you want to delete #{branch}?" }, title: "Delete branch #{branch}" %>
                     </div>
                   </li>
                 <% end %>
