@@ -73,7 +73,12 @@
                           <%= label_tag :name, nil, class: "sr-only" %>
                           <%= text_field_tag :name, nil, placeholder: "Enter a name for the branch to create...", class: "form-control" %>
                         </div>
-                        <%= button_tag "Create a new branch", class: "btn btn-success btn-block" %>
+                        <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip" }, title: "git branch" do %>
+
+                          <%= octicon "git-branch", class: "mr-1" %>
+
+                          Create a new branch
+                        <% end %>
                       <% end %>
                     </div>
                   </div>
@@ -197,7 +202,11 @@
           <% if @diff_html.present? %>
             <%= button_tag "Can't go back in time while you have pending changes. Commit or discard them first.", class: "btn btn-primary btn-block", disabled: true %>
           <% else %>
-            <%= button_tag "Create a new branch off of previous commit", class: "btn btn-success btn-block" %>
+            <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip" }, title: "git branch" do %>
+              <%= octicon "git-branch", class: "mr-1" %>
+
+              Create a new branch off of previous commit
+            <% end %>
           <% end %>
         <% end %>
 
