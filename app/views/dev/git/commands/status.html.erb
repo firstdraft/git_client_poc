@@ -155,7 +155,7 @@
                       <%= label_tag :name, "Go ahead, experiment!" %>
                       <%= text_field_tag :name, nil, placeholder: "Enter a name for the new branch...", class: "form-control" %>
                     </div>
-                    <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip" }, title: "<code>git checkout -b [BRANCH NAME]</code>" do %>
+                    <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip", html: true }, title: "<code>git checkout -b [BRANCH NAME]</code>" do %>
                       <%= octicon "git-branch", class: "mr-1" %>
 
                       Create branch
