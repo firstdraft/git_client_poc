@@ -132,11 +132,9 @@
                 </li>
 
                 <li class="list-group-item">
-                  <h3>Branch off from your current branch</h3>
-
                   <%= form_tag dev_git_branch_url, class: "full-width mb-2" do %>
                   <div class="form-group">
-                    <%= label_tag :name, nil, class: "sr-only" %>
+                    <%= label_tag :name, "Branch off from your current branch" %>
                     <%= text_field_tag :name, nil, placeholder: "Enter a name for the branch to create...", class: "form-control" %>
                   </div>
                   <%= button_tag "Create a new branch", class: "btn btn-success btn-block" %>
