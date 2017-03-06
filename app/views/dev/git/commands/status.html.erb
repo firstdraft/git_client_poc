@@ -1,13 +1,13 @@
 <div class="row mb-4">
   <div class="col">
     <div class="card">
-      <h1 class="card-header">
+      <h2 class="card-header">
         <% if @diff_html.present? %>
           On branch <code><%= @current_branch %></code>
         <% else %>
           <code>git status</code>
         <% end %>
-      </h1>
+      </h2>
 
       <div class="card-block">
         <%# if false %>
@@ -197,7 +197,9 @@
   <div class="col">
     <div class="card">
       <h2 class="card-header">
-        History
+        <code>
+          git log
+        </code>
       </h2>
 
       <div class="card-block">
@@ -214,7 +216,11 @@
           </div>
 
           <% if @diff_html.present? %>
-            <%= button_tag "Can't go back in time while you have pending changes. Commit or discard them first.", class: "btn btn-primary btn-block", disabled: true %>
+            <%= button_tag class: "btn btn-success btn-block", disabled: true do %>
+              <%= octicon "circle-slash", class: "mr-1" %>
+
+              Can't go back in time while you have pending changes. Commit or discard them first.
+            <% end %>
           <% else %>
             <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip", html: true }, title: "<code>git checkout [OLD HASH]</code><br><code>git checkout -b [NEW BRANCH NAME]</code>" do %>
               <%= octicon "git-branch", class: "mr-1" %>
