@@ -118,12 +118,16 @@
               </pre>
 
               <%= link_to dev_git_commits_push_url, class: "btn btn-primary btn-block mb-4", data: { toggle: "tooltip", html: true }, title: "<code>git push</code>" do %>
-                <%= octicon("repo-push", class: "mr-1") %>
+                <%= octicon "repo-push", class: "mr-1" %>
 
                 Push to GitHub
               <% end %>
 
-              <%= link_to "https://github.com/firstdraft/git_client_poc/compare/#{@current_branch}?expand=1", class: "btn btn-primary btn-block" %>
+              <%= link_to "https://github.com/firstdraft/git_client_poc/compare/#{@current_branch}?expand=1", class: "btn btn-primary btn-block" do %>
+                <%= octicon "git-pull-request", class: "mr-1" %>
+
+                Compare this branch with master and open a pull request
+              <% end %>
 
               <p>
                 The last thing you did was:
