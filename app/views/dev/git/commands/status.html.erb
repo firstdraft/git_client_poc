@@ -53,7 +53,7 @@
                       <%= text_area_tag :description, nil, placeholder: "Enter a longer description of your changes (optional)...", class: "form-control" %>
                     </div>
 
-                    <%= button_tag class: "btn btn-primary btn-block", data: { toggle: "tooltip", html: true }, title: "<code>git add -A; git commit</code>" do %>
+                    <%= button_tag class: "btn btn-primary btn-block", data: { toggle: "tooltip", html: true }, title: "<code>git add -A<br>git commit</code>" do %>
                       <%= octicon "git-commit", class: "mr-1" %>
 
                       Commit to <%= @current_branch %>
@@ -97,7 +97,7 @@
                     </div>
 
                     <div class="card-block">
-                      <%= button_to dev_git_commits_stash_url, class: "btn btn-danger btn-block", method: :post, data: { confirm: "Are you sure you want to discard these changes?", toggle: "tooltip", html: true }, title: "<code>git add -A; git stash</code>" do %>
+                      <%= button_to dev_git_commits_stash_url, class: "btn btn-danger btn-block", method: :post, data: { confirm: "Are you sure you want to discard these changes?", toggle: "tooltip", html: true }, title: "<code>git add -A<br>git stash</code>" do %>
                         <%= octicon "trashcan", class: "mr-1" %>
 
                         Discard all changes
@@ -216,7 +216,7 @@
           <% if @diff_html.present? %>
             <%= button_tag "Can't go back in time while you have pending changes. Commit or discard them first.", class: "btn btn-primary btn-block", disabled: true %>
           <% else %>
-            <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip", html: true }, title: "<code>git checkout [OLD HASH]; git checkout -b [NEW BRANCH NAME]</code>" do %>
+            <%= button_tag class: "btn btn-success btn-block", data: { toggle: "tooltip", html: true }, title: "<code>git checkout [OLD HASH]<br>git checkout -b [NEW BRANCH NAME]</code>" do %>
               <%= octicon "git-branch", class: "mr-1" %>
 
               Create a new branch off of previous commit
