@@ -23,14 +23,13 @@ class Dev::Git::CommandsController < ApplicationController
 
       @branches = `git branch --sort=-committerdate`.split - ["*"]
 
-      # @log = `git log --branches --remotes --tags --graph --oneline --decorate --pretty=format:"#%h %d %s - %cr"`
 
-      # @log_html = `git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%h%C(reset) - %C(bold white)%s%C(reset) %C(dim white)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%an%C(reset) %C(dim white)- %aD%C(reset)' --branches --remotes --tags | sh ansi2html.sh --bg=dark`
+      @log_html = `git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold white)%s%C(reset) %C(dim white)(%ar)%C(reset)%n%C(auto)%d%C(reset)%n''          %C(white)%an%C(reset) %C(dim white)- %aD%C(reset)' --branches --remotes --tags --color | sh ansi2html.sh --bg=dark`
       # @log_html = `git log --graph --abbrev-commit --decorate  --branches --remotes --tags | sh ansi2html.sh --bg=dark`
       # @log_html = `git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --branches --remotes --tags --color | sh ansi2html.sh --bg=dark`
       # @log_html = `git log --graph --abbrev-commit --decorate --format=format:'%C(auto)%h - %s (%ar)%d%n''          %an - %aD' --branches --remotes --tags | sh ansi2html.sh --bg=dark`
 
-      @log_html = `git log --graph --branches --remotes --tags --color | sh ansi2html.sh --bg=dark`
+      # @log_html = `git log --graph --branches --remotes --tags --color | sh ansi2html.sh --bg=dark`
     end
   end
 end
