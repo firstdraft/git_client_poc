@@ -123,12 +123,14 @@
                 Push to GitHub
               <% end %>
 
+              <%= link_to "https://github.com/firstdraft/git_client_poc/compare/#{@current_branch}?expand=1", class: "btn btn-primary btn-block" %>
+
               <p>
                 The last thing you did was:
               </p>
 
               <blockquote class="blockquote">
-                <%= @latest_commit_message %>
+                <%= @last_commit_message %>
               </blockquote>
 
               <%= link_to "#latest_diff_html", class: "btn btn-secondary btn-block mb-4", data: { toggle: "collapse" }, title: "git show" do %>
@@ -138,7 +140,7 @@
               <% end %>
 
               <div id="latest_diff_html" class="collapse">
-                <iframe srcdoc="<%= @latest_diff_html %>" width="100%" height="400" class="mb-3">
+                <iframe srcdoc="<%= @last_diff_html %>" width="100%" height="400" class="mb-3">
                 </iframe>
               </div>
             </div>

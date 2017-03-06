@@ -13,12 +13,12 @@ class Dev::Git::CommandsController < ApplicationController
           gsub("<a class=\"d2h-file-switch d2h-hide\">hide</a>", "").
           gsub("<a class=\"d2h-file-switch d2h-show\">show</a>", "")
       else
-        @latest_diff_html = `diff2html --style=line --output=stdout -- -M HEAD~1`.
+        @last_diff_html = `diff2html --style=line --output=stdout -- -M HEAD~1`.
           gsub("<h1>Diff to HTML by <a href=\"https://github.com/rtfpessoa\">rtfpessoa</a></h1>", "").
           gsub("<a class=\"d2h-file-switch d2h-hide\">hide</a>", "").
           gsub("<a class=\"d2h-file-switch d2h-show\">show</a>", "")
 
-        @latest_commit_message = `git log -1 --pretty=%B`
+        @last_commit_message = `git log -1 --pretty=%B`
       end
 
       @branches = `git branch --sort=-committerdate`.split - ["*"]
