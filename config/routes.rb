@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :commits, only: :create
       post "commits/stash"
       get "commits/push"
+      get "commits/pull"
       get "commits/add"
     end
   end
