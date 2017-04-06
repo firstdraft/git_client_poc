@@ -24,4 +24,12 @@ class Dev::Git::CommitsController < ApplicationController
 
     redirect_to dev_git_url, notice: "Pushed to GitHub."
   end
+
+  def pull
+    Dir.chdir(Rails.root) do
+      @result = `git pull`
+    end
+
+    redirect_to dev_git_url, notice: "Pulled from GitHub."
+  end
 end
