@@ -122,11 +122,13 @@
 
                 Push to GitHub
               <% end %>
-              
-              <%= link_to "https://github.com/firstdraft/git_client_poc/compare/#{@current_branch}?expand=1", class: "btn btn-primary btn-block mb-4", target: "_blank" do %>
-                <%= octicon "git-pull-request", class: "mr-1" %>
 
-                Open a pull request
+              <% if @current_branch != "master" %>
+                <%= link_to "https://github.com/firstdraft/git_client_poc/compare/#{@current_branch}?expand=1", class: "btn btn-primary btn-block mb-4", target: "_blank" do %>
+                  <%= octicon "git-pull-request", class: "mr-1" %>
+
+                  Open a pull request
+                <% end %>
               <% end %>
 
               <%= link_to dev_git_commits_pull_url, class: "btn btn-primary btn-block mb-4", data: { toggle: "tooltip", html: true }, title: "<code>git pull</code>" do %>
