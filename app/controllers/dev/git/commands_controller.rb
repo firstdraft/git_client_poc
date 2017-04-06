@@ -3,7 +3,7 @@ class Dev::Git::CommandsController < ApplicationController
     Dir.chdir(Rails.root) do
       @status = `git status`
 
-      @current_branch = `git symbolic-ref --short HEAD`
+      @current_branch = `git symbolic-ref --short HEAD`.chomp
 
       diff = `git diff`
 
